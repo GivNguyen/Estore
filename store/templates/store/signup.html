@@ -1,0 +1,64 @@
+{% extends 'store/_Master.html' %}
+{% load static %}
+{% block title_tab %}Sign up!{% endblock %} 
+{% block main_content %}
+        
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'store:trang_chu' %}">Trang Chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Đăng Nhập</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Login Start -->
+        <div class="login">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                         
+                        <div class="register-form">
+                            <form class="row" method = "post" >
+                                {% csrf_token %}
+                                <div class="col-md-12">
+                                    {{ result|safe }}
+                                </div>   
+                                <div class="col-md-6">
+                                    {{ form.first_name.label }}
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.last_name.label }}
+                                    {{ form.last_name }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.email.label }}
+                                    {{ form.email }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.password.label }}
+                                    {{ form.password }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.confirm_password.label }}
+                                    {{ form.confirm_password }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.phone.label }}
+                                    {{ form.phone }}
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn">Đăng Ký</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Login End -->
+{% endblock %}

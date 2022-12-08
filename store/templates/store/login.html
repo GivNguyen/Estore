@@ -1,0 +1,54 @@
+{% extends 'store/_Master.html' %}
+{% load static %}
+{% block title_tab %}Login{% endblock %} 
+{% block main_content %}
+        
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'store:trang_chu' %}">Trang Chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Đăng Nhập</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Login Start -->
+        <div class="login">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="login-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ result|safe }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>E-mail / Username</label>
+                                        <input class="form-control" type="text" placeholder="E-mail / Username" name="email">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Password</label>
+                                        <input class="form-control" type="text" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="newaccount">
+                                            <label class="custom-control-label" for="newaccount">Keep me signed in</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn">Đăng Nhập</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login End -->
+{% endblock %}
