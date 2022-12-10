@@ -12,7 +12,9 @@ def trang_chu(request):
 
     # Thiết bị gia đình
     subcategories_tbgd = SubCategory.objects.filter(category=1).values_list('id')
+    
     list_subcategory_id_tbgd = [subcategory_id[0] for subcategory_id in subcategories_tbgd]
+
     products_tbgd = Product.objects.filter(subcategory__in=list_subcategory_id_tbgd).order_by('-public_day')
 
     dem = 0
@@ -63,8 +65,23 @@ def trang_chu_2(request):
 
     return response
 
-def san_pham(request):
-    return render(request, 'store/product_list.html')
+def san_pham(request, pk):
+    danh_muc = SubCategory.objects.all()
+    # list1 = danh_muc.values_list()
+    # for i in list1:
+        
+    brand = Brand.objects.order_by('name')
+    if pk == 0:
+        all_product = Product.objects.all()
+
+    else:
+        all_product = Product.objects.filter(subcategory=pk)
+        
+    return render(request, 'store/product_list.html', {
+        'all_products': all_product,
+        'danh_muc': danh_muc,
+        'brands': brand,
+    })
 
 def detail_sp(request):
     return render(request, 'store/product_detail.html')
